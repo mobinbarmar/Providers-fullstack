@@ -29,9 +29,33 @@
             <td scope="row">
               <a href="/providers/details/{{ id }}" class="btn btn-info btn-small">More info...</a>
               <a href="/providers/edit/{{ id }}" class="btn btn-secondary btn-small">Edit</a>
-              <a href="/providers/delete/{{ id }}" class="btn btn-danger btn-small">Delete</a>
+              <a href="#myModal{{id}}" class="btn btn-danger btn-small" data-toggle="modal">Delete</a>
             </td>
           </tr>
+
+
+          <!-- Modal Window - Confirmation -->
+          <div id="myModal{{id}}" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                  </div>
+                  <h4 class="modal-title">Are you sure?</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>Do you really want to delete these records? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info btn-md" data-dismiss="modal">Cancel</button>
+                  <a href="/providers/delete/{{id}}" type="button" class="btn btn-danger">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {{/each}}
         </tbody>
       </table>
