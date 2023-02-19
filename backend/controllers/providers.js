@@ -87,13 +87,18 @@ exports.add = (req, res) => {
         title: 'Added',
     })
 }
+// Delete
+exports.delete = (req, res) => {
+    let id = req.params.id
+    let provider = providers.find(provider => provider.id == id)
+    let company = provider.company.company_name
 
-// exports.delete = (req, res) => {
-//     let id = req.params.id
-//     let provider = providers.find(provider => provider.id == id)
-//     res.render('providers/providers-edit', {
-//         id,
-//         title: 'Edit',
-//         provider: provider
-//     })
-// }
+    let idx = providers.indexOf(provider)
+    // Remove
+    providers.splice(idx,1)
+
+    res.render('providers/providers-delete', {
+        title: 'Delete',
+        company
+    })
+}
