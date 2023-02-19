@@ -3,21 +3,21 @@ exports.home = (req, res) => {
 }
 
 exports.about = (req, res) => {
-    res.render('about')
+    res.render('about', {title: 'About'})
 }
 
 exports.contact = (req, res) => {
-    res.render('contact')
+    res.render('contact', {title: 'Contact'})
 }
 
 exports.login = (req, res) => {
-    res.render('login')
+    res.render('login', {title: 'Login'})
 }
 
 exports.register = (req, res) => {
-    res.render('register')
+    res.render('register', {title: 'Register'})
 }
 
 exports.forgetpassword = (req, res) => {
-    res.render('forget-password')
+    res.render('forget-password', {title: 'Forget'})
 }

@@ -1,8 +1,25 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.btn-google{
+  color: #fff;
+  background-color: red;
+  border-color: white;
+}
+.btn-facebook{
+  color: #fff;
+  background-color: darkblue;
+  border-color: white;
+}
+
+form.user .btn-user{
+  font-size: .8rem;
+  border-radius: 10rem;
+  padding: .7rem 1rem;
 }
