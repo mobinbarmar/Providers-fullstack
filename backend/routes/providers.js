@@ -9,8 +9,14 @@ router.get('/', providersController.list);
 router.get('/details/:id', providersController.details);
 // GET edit page
 router.get('/edit/:id', providersController.edit);
-// GET post page
+// POST update page
 router.post('/update/:id', providersController.update);
+// GET edit page
+router.get('/add-provider', providersController.addform);
+// POST add page
+router.post('/add', providersController.add);
+// GET delete page
+router.get('/delete/:id', providersController.delete);
 
 
 
