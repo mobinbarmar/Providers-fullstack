@@ -7,6 +7,11 @@ const { ObjectId } = require('mongodb');
 function isEmptyList(obj) {
     return (!obj || obj.length == 0 || Object.keys(obj).length == 0)
 }
+// Handle error
+function handleError(res, err) {
+    res.status(200)
+    res.send('Something went wrong\n' + err)
+}
 // function existsProvider(id){
 //     return providers.find(provider => provider.id == id)
 // }
@@ -22,26 +27,19 @@ function isEmptyList(obj) {
 // uri: /api/providers
 // POST
 exports.create = (req, res) => {
-    if (isEmptyList(providers)) {
-        providers = []
-    }
-    var id = req.body.id
-    if (existsProvider(id)) {
-        res.status(400)
-        res.send('Duplicate id not allowed')
-        id = getUniqueId()
-    }
     var provider = req.body
-    provider.id = id
-    providers.push(provider)
-    res.status(200)
-    res.send(provider)
+    try {
+        Provider.create(provider)
+            .then(result => {
+                res.status(201)
+                res.send(result)
+            }).catch(err => handleError(res, err))
+    } catch (err) {
+        handleError(res, err)
+    }
 }
-// Handle error
-function handleError(res, err) {
-    res.status(200)
-    res.send('Something went wrong\n' + err)
-}
+
+
 
 // GET All
 exports.readAll = (req, res) => {
@@ -62,7 +60,7 @@ exports.readAll = (req, res) => {
 // GET One
 exports.readOne = (req, res) => {
     try {
-        let id = new ObjectId(req.params.id) 
+        let id = new ObjectId(req.params.id)
         Provider.find({ '_id': id })
             .then(result => {
                 if (isEmptyList(result)) {
@@ -73,7 +71,7 @@ exports.readOne = (req, res) => {
                 res.status(200)
                 res.send(result)
             }).catch(err => handleError(res, err))
-        } catch (err) {
+    } catch (err) {
         handleError(res, err)
     }
 }
