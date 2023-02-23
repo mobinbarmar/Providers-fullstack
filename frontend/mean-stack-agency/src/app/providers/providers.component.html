@@ -19,23 +19,24 @@
             </tr>
           </thead>
           <tbody>
-            {{#each providers}}
+            <ng-container *ngFor="let provider of providers">
+            
             <tr>
-              <td scope="row">{{ id }}</td>
-              <td scope="row">{{ firstname }}</td>
-              <td scope="row">{{ lastname }}</td>
-              <td scope="row">{{ position }}</td>
-              <td scope="row">{{ company.company_name }}</td>
+              <td scope="row">{{ provider.id }}</td>
+              <td scope="row">{{ provider.firstname }}</td>
+              <td scope="row">{{ provider.lastname }}</td>
+              <td scope="row">{{ provider.position }}</td>
+              <td scope="row">{{ provider.company.company_name }}</td>
               <td scope="row">
-                <a href="/providers/details/{{ id }}" class="btn btn-info btn-small">More info...</a>
-                <a href="/providers/edit/{{ id }}" class="btn btn-secondary btn-small">Edit</a>
-                <a href="#myModal{{id}}" class="btn btn-danger btn-small" data-toggle="modal">Delete</a>
+                <a href="/providers/details/{{ provider.id }}" class="btn btn-info btn-small mx-1">More info...</a>
+                <a href="/providers/edit/{{ provider.id }}" class="btn btn-secondary btn-small mx-1">Edit</a>
+                <a href="#myModal{{provider.id}}" class="btn btn-danger btn-small mx-1" data-toggle="modal">Delete</a>
               </td>
             </tr>
   
   
             <!-- Modal Window - Confirmation -->
-            <div id="myModal{{id}}" class="modal fade">
+            <div id="myModal{{provider.id}}" class="modal fade">
               <div class="modal-dialog modal-confirm">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -50,13 +51,14 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info btn-md" data-dismiss="modal">Cancel</button>
-                    <a href="/providers/delete/{{id}}" type="button" class="btn btn-danger">Delete</a>
+                    <a href="/providers/delete/{{provider.id}}" type="button" class="btn btn-danger">Delete</a>
                   </div>
                 </div>
               </div>
             </div>
   
-            {{/each}}
+            
+        </ng-container>
           </tbody>
         </table>
   

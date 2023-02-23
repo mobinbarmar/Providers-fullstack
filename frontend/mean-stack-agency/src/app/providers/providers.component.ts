@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { provider } from '../models/providers.data';
+
 
 @Component({
   selector: 'app-providers',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class ProvidersComponent implements OnInit {
+
+  providers: any[] = provider
 
   constructor() { }
 
