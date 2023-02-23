@@ -13,4 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  title = 'The Mean Stack Agency'
+
 }

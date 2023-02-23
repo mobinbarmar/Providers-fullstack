@@ -3,7 +3,7 @@
       <h2 class="text-center mt-0">At Your Service</h2>
       <hr class="divider my-4">
   
-      <a href="/providers/add-provider/" class="btn btn-primary my-2">Add New Provider</a>
+      <a routerLink="/providers/add-provider/" class="btn btn-primary my-2" routerLinkActive="active">Add New Provider</a>
   
       <div class="table-responsive">
   
@@ -28,8 +28,8 @@
               <td scope="row">{{ provider.position }}</td>
               <td scope="row">{{ provider.company.company_name }}</td>
               <td scope="row">
-                <a href="/providers/details/{{ provider.id }}" class="btn btn-info btn-small mx-1">More info...</a>
-                <a href="/providers/edit/{{ provider.id }}" class="btn btn-secondary btn-small mx-1">Edit</a>
+                <a routerLink="/providers/details/{{ provider.id }}" class="btn btn-info btn-small mx-1">More info...</a>
+                <a routerLink="/providers/edit/{{ provider.id }}" class="btn btn-secondary btn-small mx-1">Edit</a>
                 <a href="#myModal{{provider.id}}" class="btn btn-danger btn-small mx-1" data-toggle="modal">Delete</a>
               </td>
             </tr>
@@ -51,7 +51,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info btn-md" data-dismiss="modal">Cancel</button>
-                    <a href="/providers/delete/{{provider.id}}" type="button" class="btn btn-danger">Delete</a>
+                    <a routerLink="/providers/delete/{{provider.id}}" type="button" class="btn btn-danger">Delete</a>
                   </div>
                 </div>
               </div>
