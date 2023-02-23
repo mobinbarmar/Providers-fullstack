@@ -12,6 +12,7 @@ import { ContactComponent } from './contact/contact.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProvidersModule } from './providers/providers.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     FormsModule,
     AboutModule,
-    UserModule
+    UserModule,
+    ProvidersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
