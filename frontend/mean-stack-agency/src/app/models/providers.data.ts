@@ -1,4 +1,4 @@
-export let provider = [
+export let providers = [
     {
         "id": 414532,
         "firstname": "Marylinda",
