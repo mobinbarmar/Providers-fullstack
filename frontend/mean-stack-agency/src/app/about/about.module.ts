@@ -11,6 +11,7 @@ import { AboutComponent } from './about.component';
   imports: [
     CommonModule
   ],
-  exports: [AboutComponent]
+  exports: [AboutComponent],
+  providers: []
 })
 export class AboutModule { }
