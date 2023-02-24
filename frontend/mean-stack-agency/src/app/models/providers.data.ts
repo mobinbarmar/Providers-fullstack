@@ -1,4 +1,6 @@
-export let providers = [
+import { ProviderClass } from "./providers.class";
+
+export let providers: ProviderClass[] = [
     {
         "id": 414532,
         "firstname": "Marylinda",
