@@ -45,27 +45,34 @@ export class AddProvidersComponent implements OnInit {
         break
       }
     }
-
-
+    
     let p = this.providersForm.value
-    this.provider.id = newId
-    this.provider.firstname = p.firstname
-    this.provider.lastname = p.lastname
-    this.provider.position = p.position
-    this.provider.company = {
-      company_name: p.company_name,
-      address: p.address,
-      address2: p.address2,
-      city: p.city,
-      state: p.state,
-      postal_code: p.postal_code,
-      phone: p.phone,
-      email: p.email,
-      description: p.description,
-      tagline: p.tagline
+    console.log(p);
+    this.provider = {
+      id: p.id,
+      firstname: p.firstname,
+      lastname: p.lastname,
+      position: p.position,
+      company: p.company
     }
+    // this.provider.id = newId
+    // this.provider.firstname = p.firstname
+    // this.provider.lastname = p.lastname
+    // this.provider.position = p.position
+    // this.provider.company = {
+    //   company_name: p.company_name,
+    //   address: p.address,
+    //   address2: p.address2,
+    //   city: p.city,
+    //   state: p.state,
+    //   postal_code: p.postal_code,
+    //   phone: p.phone,
+    //   email: p.email,
+    //   description: p.description,
+    //   tagline: p.tagline
+    // }
     providers.push(this.provider)
     this.submitted = true
-
+    console.log(this.submitted);
   }
 }

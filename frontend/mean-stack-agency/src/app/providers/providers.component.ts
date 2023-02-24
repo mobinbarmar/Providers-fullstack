@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { provider } from '../models/providers.data';
+import { providers } from '../models/providers.data';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { provider } from '../models/providers.data';
 })
 export class ProvidersComponent implements OnInit {
 
-  providers: any[] = provider
+  providers: any[] = providers
 
   constructor() { }
 
