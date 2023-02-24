@@ -1,4 +1,4 @@
-export class ProviderClass {
+export interface ProviderClass {
     id: number;
     firstname: string;
     lastname: string;
@@ -13,6 +13,6 @@ export class ProviderClass {
         phone: string,
         email: string,
         description: string,
-        tabline: string
+        tagline: string
     }
 }

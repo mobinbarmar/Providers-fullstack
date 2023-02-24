@@ -11,7 +11,7 @@ import { providers } from 'src/app/models/providers.data';
 export class AddProvidersComponent implements OnInit {
 
   submitted = false
-  provider = new ProviderClass()
+  provider!: ProviderClass
   providersForm!: FormGroup
 
   constructor() { }
@@ -62,7 +62,7 @@ export class AddProvidersComponent implements OnInit {
       phone: p.phone,
       email: p.email,
       description: p.description,
-      tabline: p.tabline
+      tagline: p.tagline
     }
     providers.push(this.provider)
     this.submitted = true
