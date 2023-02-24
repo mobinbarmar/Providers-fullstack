@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProviderClass } from 'src/app/models/providers.class';
 import { providers } from 'src/app/models/providers.data';
 
 @Component({
   selector: 'app-add-providers',
   templateUrl: './add-providers.component.html',
-  styleUrls: ['./add-providers.component.css']
+  styleUrls: []
 })
 export class AddProvidersComponent implements OnInit {
 
@@ -18,11 +18,11 @@ export class AddProvidersComponent implements OnInit {
 
   ngOnInit(): void {
     this.providersForm = new FormGroup({
-      firstname: new FormControl(),
+      firstname: new FormControl('', [Validators.required, Validators.minLength(2)]),
       lastname: new FormControl(),
       position: new FormControl(),
-      email: new FormControl(),
-      phone: new FormControl(),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phone: new FormControl('', [Validators.required, Validators.pattern('^[2-9]{3}-[0-9]{3}-[0-9]{4}$')]),
       company_name: new FormControl(),
       address: new FormControl(),
       address2: new FormControl(),
@@ -55,24 +55,11 @@ export class AddProvidersComponent implements OnInit {
       position: p.position,
       company: p.company
     }
-    // this.provider.id = newId
-    // this.provider.firstname = p.firstname
-    // this.provider.lastname = p.lastname
-    // this.provider.position = p.position
-    // this.provider.company = {
-    //   company_name: p.company_name,
-    //   address: p.address,
-    //   address2: p.address2,
-    //   city: p.city,
-    //   state: p.state,
-    //   postal_code: p.postal_code,
-    //   phone: p.phone,
-    //   email: p.email,
-    //   description: p.description,
-    //   tagline: p.tagline
-    // }
     providers.push(this.provider)
     this.submitted = true
     console.log(this.submitted);
   }
+
+  // Method to easy access form controls
+  get f(){return this.providersForm.controls}
 }
