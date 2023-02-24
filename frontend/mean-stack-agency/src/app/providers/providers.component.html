@@ -1,26 +1,27 @@
 <section class="page-section" id="provider-list">
-    <div class="container">
-      <h2 class="text-center mt-0">At Your Service</h2>
-      <hr class="divider my-4">
-  
-      <a routerLink="/providers/add" class="btn btn-primary my-2" routerLinkActive="active">Add New Provider</a>
-  
-      <div class="table-responsive">
-  
-        <table class="table table-hover table-bordered">
-          <thead class="thead-light">
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Position</th>
-              <th scope="col">Company</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ng-container *ngFor="let provider of providers">
-            
+  <div class="container">
+    <h2 class="text-center mt-0">At Your Service</h2>
+    <hr class="divider my-4">
+
+    <a routerLink="/providers/add" class="btn btn-primary my-2" routerLinkActive="active">Add New Provider</a>
+
+    <div class="table-responsive">
+
+      <table class="table table-hover table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Position</th>
+            <th scope="col">Company</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <ng-container *ngFor="let provider of providers">
+
             <tr>
               <td scope="row">{{ provider.id }}</td>
               <td scope="row">{{ provider.firstname }}</td>
@@ -28,13 +29,14 @@
               <td scope="row">{{ provider.position }}</td>
               <td scope="row">{{ provider.company.company_name }}</td>
               <td scope="row">
-                <a routerLink="/providers/details/{{ provider.id }}" class="btn btn-info btn-small mx-1">More info...</a>
+                <a routerLink="/providers/details/{{ provider.id }}" class="btn btn-info btn-small mx-1">More
+                  info...</a>
                 <a routerLink="/providers/edit/{{ provider.id }}" class="btn btn-secondary btn-small mx-1">Edit</a>
                 <a href="#myModal{{provider.id}}" class="btn btn-danger btn-small mx-1" data-toggle="modal">Delete</a>
               </td>
             </tr>
-  
-  
+
+
             <!-- Modal Window - Confirmation -->
             <div id="myModal{{provider.id}}" class="modal fade">
               <div class="modal-dialog modal-confirm">
@@ -56,12 +58,13 @@
                 </div>
               </div>
             </div>
-  
-            
-        </ng-container>
-          </tbody>
-        </table>
-  
-      </div>
+
+
+          </ng-container>
+
+        </tbody>
+      </table>
+
     </div>
-  </section>
+  </div>
+</section>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { providers } from '../models/providers.data';
+import { map, tap } from 'rxjs';
+import { ProviderClass } from '../models/providers.class';
+import { ProviderService } from '../services/provider.service';
 
 
 @Component({
@@ -10,11 +12,23 @@ import { providers } from '../models/providers.data';
 })
 export class ProvidersComponent implements OnInit {
 
-  providers: any[] = providers
+  providers!: ProviderClass[]
 
-  constructor() { }
+  constructor(private providerSer: ProviderService) { }
 
   ngOnInit(): void {
+    this.loadData()
+  }
+
+  loadData(){
+    this.providerSer.getProviders()
+      .subscribe((data) => {
+        this.providers = data
+        this.providers
+        console.log(this.providers[0].id);
+      }, err => {
+        console.log(err)
+      })
   }
 
 }
