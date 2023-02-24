@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProviderClass } from 'src/app/models/providers.class';
-import { providers } from 'src/app/models/providers.data';
+import { ProviderService } from 'src/app/services/provider.service';
 
 @Component({
   selector: 'app-add-providers',
@@ -11,12 +11,77 @@ import { providers } from 'src/app/models/providers.data';
 export class AddProvidersComponent implements OnInit {
 
   submitted = false
+  emailError = false
+  emailErrorMsg = 'Invalid email. Try again!'
+  providers!: ProviderClass[]
   provider!: ProviderClass
   providersForm!: FormGroup
 
-  constructor() { }
+  constructor(private providerSer: ProviderService) { }
 
   ngOnInit(): void {
+    this.buildFromControls()
+    this.loadData()
+  }
+
+  handleSubmit() {
+    console.log(this.providersForm.value);
+    this.buildProvider()
+    if(!this.isInvalidEmail()){
+      this.providerSer.addProvider(this.provider)
+        .subscribe((data) => {
+          this.submitted = true
+          this.emailError = false
+        }, (err) => {
+          console.log(err)
+        })
+    }
+  }
+  loadData(){
+    this.providerSer.getProviders()
+      .subscribe((data) => {
+        this.providers = data
+        this.providers
+      }, err => {
+        console.log(err)
+      })
+  }
+  // Check for duplicate emails
+  isInvalidEmail(){
+    let email = this.providersForm.get('email')?.value
+    if(this.providers.filter(el => el.company.email == email).length > 0){
+      this.emailError = true
+      return true
+    }
+    return false
+  }
+  // Generate New id
+  getNewId(){
+    let newId: number
+    while (true) {
+      newId = Math.floor(Math.random() * 10000) + 99999
+      if (this.providers.findIndex(el => el._id == newId) == -1) {
+        return newId
+      }
+    }
+  }
+  // Build new provider object
+  buildProvider(){
+    let p = this.providersForm.value
+    this.provider = {
+      _id: this.getNewId(),
+      firstname: p.firstname,
+      lastname: p.lastname,
+      position: p.position,
+      company: p.company
+    }
+  }
+
+  // Method to easy access form controls
+  get f(){return this.providersForm.controls}
+
+  // Build form controls
+  buildFromControls(){
     this.providersForm = new FormGroup({
       firstname: new FormControl('', [Validators.required, Validators.minLength(2)]),
       lastname: new FormControl(),
@@ -34,32 +99,4 @@ export class AddProvidersComponent implements OnInit {
 
     })
   }
-
-  handleSubmit() {
-    console.log(this.providersForm.value);
-
-    let newId: number
-    while (true) {
-      newId = Math.floor(Math.random() * 10000) + 99999
-      if (providers.findIndex(el => el._id == newId) == -1) {
-        break
-      }
-    }
-    
-    let p = this.providersForm.value
-    console.log(p);
-    this.provider = {
-      _id: p._id,
-      firstname: p.firstname,
-      lastname: p.lastname,
-      position: p.position,
-      company: p.company
-    }
-    providers.push(this.provider)
-    this.submitted = true
-    console.log(this.submitted);
-  }
-
-  // Method to easy access form controls
-  get f(){return this.providersForm.controls}
 }

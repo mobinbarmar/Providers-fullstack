@@ -23,10 +23,8 @@ export class ProvidersComponent implements OnInit {
   loadData(){
     this.providerSer.getProviders()
       .subscribe((data) => {
-        console.log(data);
         this.providers = data
         this.providers
-        console.log(data[0]._id);
       }, err => {
         console.log(err)
       })

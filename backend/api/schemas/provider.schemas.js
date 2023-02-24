@@ -19,6 +19,7 @@ const companySchema = new Schema({
 
 // Create provider schema
 const providerSchema = new Schema({
+        "id": {type: Number, required: true, unique: true},
         "firstname": {type: String, required: true},
         "lastname": {type: String, required: true},
         "position": String,

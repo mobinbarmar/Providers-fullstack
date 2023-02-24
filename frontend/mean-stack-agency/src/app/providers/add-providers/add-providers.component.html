@@ -12,6 +12,11 @@
         <div class="row o-hidden border-0">
           <div class="col-lg-12">
             <h1 class="mt-0 text-success" *ngIf="submitted">Added successly!</h1>
+
+            <p class="mt-0 alert alert-danger" *ngIf="emailError">
+              *Error: {{ emailErrorMsg }}
+            </p>
+
             <form class="user" [formGroup]="providersForm" *ngIf="!submitted" (ngSubmit)="handleSubmit()">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
