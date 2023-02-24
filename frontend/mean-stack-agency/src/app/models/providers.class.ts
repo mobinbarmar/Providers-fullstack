@@ -1,5 +1,5 @@
 export interface ProviderClass {
-    id: number;
+    _id: number;
     firstname: string;
     lastname: string;
     position: string;

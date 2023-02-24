@@ -41,7 +41,7 @@ export class AddProvidersComponent implements OnInit {
     let newId: number
     while (true) {
       newId = Math.floor(Math.random() * 10000) + 99999
-      if (providers.findIndex(el => el.id == newId) == -1) {
+      if (providers.findIndex(el => el._id == newId) == -1) {
         break
       }
     }
@@ -49,7 +49,7 @@ export class AddProvidersComponent implements OnInit {
     let p = this.providersForm.value
     console.log(p);
     this.provider = {
-      id: p.id,
+      _id: p._id,
       firstname: p.firstname,
       lastname: p.lastname,
       position: p.position,

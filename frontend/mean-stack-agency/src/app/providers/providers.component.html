@@ -23,22 +23,22 @@
           <ng-container *ngFor="let provider of providers">
 
             <tr>
-              <td scope="row">{{ provider.id }}</td>
+              <td scope="row">{{ provider._id }}</td>
               <td scope="row">{{ provider.firstname }}</td>
               <td scope="row">{{ provider.lastname }}</td>
               <td scope="row">{{ provider.position }}</td>
               <td scope="row">{{ provider.company.company_name }}</td>
               <td scope="row">
-                <a routerLink="/providers/details/{{ provider.id }}" class="btn btn-info btn-small mx-1">More
+                <a routerLink="/providers/details/{{ provider._id }}" class="btn btn-info btn-small mx-1">More
                   info...</a>
-                <a routerLink="/providers/edit/{{ provider.id }}" class="btn btn-secondary btn-small mx-1">Edit</a>
-                <a href="#myModal{{provider.id}}" class="btn btn-danger btn-small mx-1" data-toggle="modal">Delete</a>
+                <a routerLink="/providers/edit/{{ provider._id }}" class="btn btn-secondary btn-small mx-1">Edit</a>
+                <a href="#myModal{{provider._id}}" class="btn btn-danger btn-small mx-1" data-toggle="modal">Delete</a>
               </td>
             </tr>
 
 
             <!-- Modal Window - Confirmation -->
-            <div id="myModal{{provider.id}}" class="modal fade">
+            <div id="myModal{{provider._id}}" class="modal fade">
               <div class="modal-dialog modal-confirm">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -53,7 +53,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-info btn-md" data-dismiss="modal">Cancel</button>
-                    <a routerLink="/providers/delete/{{provider.id}}" type="button" class="btn btn-danger">Delete</a>
+                    <a routerLink="/providers/delete/{{provider._id}}" type="button" class="btn btn-danger">Delete</a>
                   </div>
                 </div>
               </div>
