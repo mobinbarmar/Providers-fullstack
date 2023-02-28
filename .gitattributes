@@ -2,4 +2,3 @@
 
 *.js linguist-detectable=true
 *.ts linguist-detectable=true
-* linguist-vendored
